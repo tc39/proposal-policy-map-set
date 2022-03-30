@@ -2,6 +2,9 @@
 ECMAScript Stage-0 Proposal. J. S. Choi, 2022.
 
 ## Rationale
+> [There are only two hard things in computer science: cache invalidation and naming things.][two hard things]
+
+[two hard things]: https://www.martinfowler.com/bliki/TwoHardThings.html
 
 ## Description
 
