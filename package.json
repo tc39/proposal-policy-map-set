@@ -1,0 +1,31 @@
+{
+  "name": "proposal-policy-map-set",
+  "private": true,
+  "description": "A TC39 proposal for Maps and Sets with cache replacement policies like LRU and LFU.",
+  "author": "J. S. Choi <jschoi@jschoi.org> (https://jschoi.org/)",
+  "license": "BSD-3-Clause",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/js-choi/proposal-policy-map-set.git"
+  },
+  "keywords": [
+    "proposal",
+    "tc39",
+    "map",
+    "set",
+    "cache",
+    "fifo",
+    "lifo",
+    "lru",
+    "lfu"
+  ],
+  "scripts": {
+    "prebuild": "mkdir -p dist",
+    "build": "ecmarkup --verbose spec.html dist/index.html --css dist/ecmarkup.css --js dist/ecmarkup.js",
+    "watch": "npm run build -- --watch"
+  },
+  "devDependencies": {
+    "ecmarkup": "^10.0.2"
+  },
+  "homepage": "https://github.com/js-choi/proposal-policy-map-set"
+}
