@@ -16,3 +16,7 @@ ECMAScript Stage-0 Proposal. J. S. Choi, 2022.
 ## Real-world examples
 
 ## Precedents and web compatibility
+
+* [collections.js][]
+
+[collections.js]: https://www.collectionsjs.com/lru-map
