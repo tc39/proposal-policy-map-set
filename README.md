@@ -1,5 +1,7 @@
 # Policy Maps and Sets for JavaScript
-ECMAScript Stage-0 Proposal. J. S. Choi, 2022.
+ECMAScript Stage-0 Proposal. 2022.
+
+Champions: Hemanth HM; J. S. Choi.
 
 ## Rationale
 > [There are only two hard things in computer science: cache invalidation and naming things.][two hard things]
