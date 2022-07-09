@@ -10,10 +10,11 @@ Champions: Hemanth HM; J. S. Choi.
 
 Developers often use mapping data structures as caches, and they often wish to
 limit the memory consumption of said caches. [Cache-replacement
-policies][policies] are common, useful, repetitive, and annoying to
+policies][] are common, useful, repetitive, and annoying to
 reimplement.
 
-For example, the proposed [memo function][] (for [function memoization][])
+For example, the proposed [memo function][proposal-function-memo]
+(for [function memoization][])
 would use Map-like objects to store recent function calls’ arguments and
 results, giving the developer the power to decide on what cache-replacement
 policy and limit they wish:
@@ -26,17 +27,37 @@ console.log([ fnMemo(0) ]);
 // the result of the first call in the cache.
 ```
 
+Another use case might be memory management for large applications, as an
+alternative to using WeakRefs or exposing garbage-collection hooks. (See
+[issue #4][].)
+
 However, without built-in Map-like classes with cache policies, it would be
 difficult, annoying, and unergonomic to assign a policy to the memo function
 from a userland library or hand-written data structure.
 
-[policies]: https://en.wikipedia.org/wiki/Cache_replacement_policies
-[memo function]: https://github.com/js-choi/proposal-function-memo
+[cache-replacement policies]: https://en.wikipedia.org/wiki/Cache_replacement_policies
 [function memoization]: https://en.wikipedia.org/wiki/Memoization
 
-## Description
+We therefore propose exploring the addition of mapping data structures to the JavaScript
+language that support various basic, simple cache replacement policies, e.g.,
+LRU (least recently used), LFU (least frequently used), FIFO (first in, first
+out) and LIFO (last in, first out).
+
+If this proposal is approved for Stage 1, then we would explore various
+directions for the design of these data structures, and we will decide on which
+policies would be most appropriate to add. We would also assemble as many
+real-world use cases as possible and shape our design to fulfill them.
+
+In addition, if both [proposal-function-memo][] and this proposal are approved for
+Stage 1, then we would explore how memoized functions could use these data
+structures to control their caches’ memory usage.
+
+[proposal-function-memo]: https://github.com/js-choi/proposal-function-memo
+
+## Possible solution
 The proposal would add several built-in classes to the global object. Each of
-these have either a mutable Map-like interface or a mutable Set-like interface (although neither are actual subclasses of Map or Set; see [issue #1][]).
+these have either a mutable Map-like interface or a mutable Set-like interface
+(although neither are actual subclasses of Map or Set; see [issue #1][]).
 
 For the Map-like classes, these include:
 
@@ -148,6 +169,14 @@ of entries/values, or if the initial entries/values are not iterable.
 
 Their instances first evict the entries/values that were least frequently
 accessed with `.get` (for LRUMap) or `.has` (for LRUSet).
+
+## Alternative solution
+Alternatively, we could add optional arguments to the existing Map and Set
+constructors:
+
+```js
+const cache = new Map(initialEntries, 256, policyType);
+```
 
 ## Real-world examples
 [Real-world examples wanted][issue #4].
