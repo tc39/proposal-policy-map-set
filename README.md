@@ -109,11 +109,6 @@ Returns a boolean of whether `s` did have `value` before `value` was deleted.
 
 `s.forEach()`: Uncertain if we should implement. See [issue #3][].
 
-***
-
-Unlike Map and Set, none of these classes have a Symbol.species instance
-property.
-
 ### FIFOMap and FIFOSet
 
 ```js
