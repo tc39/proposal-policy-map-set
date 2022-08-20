@@ -180,12 +180,14 @@ const cache = new Map(initialEntries, 256, policyType);
 ## Precedents and web compatibility
 
 * [collections.js][]
+* [Google Guava caches][]
 * [Python functools.lru_cache][]
 * [rsms/js-lru][] API includes iterators, newest, & oldest
 
 [collections.js]: https://www.collectionsjs.com/lru-map
 [Python functools.lru_cache]: https://docs.python.org/3/library/functools.html#functools.lru_cache
 [rsms/js-lru]: https://github.com/rsms/js-lru
+[Google Guava caches]: https://github.com/google/guava/wiki/CachesExplained
 
 [issue #1]: https://github.com/js-choi/proposal-policy-map-set/issues/1
 [issue #3]: https://github.com/js-choi/proposal-policy-map-set/issues/3
